@@ -6,7 +6,7 @@ public class PlayerMovment : MonoBehaviour
 {
     public float speed = 10f;
     public float jumpForce;
-    bool onAir = false;
+    public bool onAir = false;
     private Camera camera;
     Rigidbody rigidbody;
     // Start is called before the first frame update
@@ -27,10 +27,9 @@ public class PlayerMovment : MonoBehaviour
             rigidbody.velocity = new Vector3(dir.x*speed,rigidbody.velocity.y,dir.z*speed);
             transform.rotation = Quaternion.LookRotation(dir);
         }else{
-            rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);;
+            // rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);;
         }
         if(Input.GetButtonDown("Jump") && onAir == false){
-            print("jump");
             onAir = true;
             rigidbody.AddForce(Vector3.up*jumpForce);
         }

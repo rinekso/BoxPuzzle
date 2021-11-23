@@ -6,13 +6,13 @@ public class GrabbableObject : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
-            other.GetComponent<PlayerStat>().ActiveGrab(true);
-            other.GetComponent<PlayerStat>().targetObject = gameObject;
+            GameController.instance.ActiveGrab(true);
+            GameController.instance.SetObjectToPlayer(gameObject);
         }
     }
     private void OnTriggerExit(Collider other) {
         if(other.tag == "Player"){
-            other.GetComponent<PlayerStat>().ActiveGrab(false);
+            GameController.instance.ActiveGrab(false);
         }
     }
     // Start is called before the first frame update
