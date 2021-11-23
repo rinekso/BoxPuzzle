@@ -11,11 +11,13 @@ public class PlayerStat : MonoBehaviour
         targetObject.transform.parent = objectTemp;
         targetObject.transform.localPosition = Vector3.zero;
         targetObject.transform.localRotation = new Quaternion();
+        targetObject.GetComponent<Rigidbody>().mass = 0;
         targetObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     public void DropObject(){
         objectTemp.GetChild(0).position = placingObject.position;
-        objectTemp.GetChild(0).parent = null;
+        objectTemp.GetChild(0).parent = transform.parent;
+        targetObject.GetComponent<Rigidbody>().mass = 5;
         targetObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
     

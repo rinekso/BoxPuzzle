@@ -356,6 +356,8 @@ MonoBehaviour:
   speed: 10
   jumpForce: 700
   onAir: 0
+  joystick: 1
+  jumpIndicator: 0
 --- !u!114 &2004215517
 MonoBehaviour:
   m_ObjectHideFlags: 0
