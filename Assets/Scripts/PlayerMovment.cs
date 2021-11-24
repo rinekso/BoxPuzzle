@@ -7,7 +7,10 @@ public class PlayerMovment : MonoBehaviour
 {
     public float speed = 10f;
     public float jumpForce;
+    public float dashForce;
     public bool onAir = false;
+    public bool canMove = true;
+    public bool isDashing = false;
     private Camera camera;
     Rigidbody rigidbody;
     FixedJoystick fixedJoystick;
@@ -35,20 +38,39 @@ public class PlayerMovment : MonoBehaviour
             if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
                 Move();
         }
-
-        if(Input.GetButtonDown("Jump") && onAir == false){
+        if(Input.GetButtonDown("Jump")) Jump();
+    }
+    public void Jump(){
+        if(onAir == false){
             onAir = true;
             rigidbody.AddForce(Vector3.up*jumpForce);
         }
+    }
+    public void Dash(){
+        if(isDashing == false)
+            StartCoroutine(DashTime());
+    }
+    Vector3 dirTemp;
+    IEnumerator DashTime(){
+        canMove = false;
+        isDashing = true;
+        
+        rigidbody.velocity = new Vector3(dirTemp.x*dashForce,0,dirTemp.z*dashForce);
+        yield return new WaitForSeconds(.5f);
+        canMove = true;
+        yield return new WaitForSeconds(.5f);
+        isDashing = false;
     }
     void Move(){
         Vector3 input = new Vector3(horizontal,0,vertical);
         Vector3 camPos = camera.transform.position;
 
         Vector3 a = camPos+input;
-        Vector3 dir = Quaternion.Euler(new Vector3(0,camera.transform.rotation.eulerAngles.y,0))*(a-camPos).normalized;
-        rigidbody.velocity = new Vector3(dir.x*speed,rigidbody.velocity.y,dir.z*speed);
-        transform.rotation = Quaternion.LookRotation(dir);
+        dirTemp = Quaternion.Euler(new Vector3(0,camera.transform.rotation.eulerAngles.y,0))*(a-camPos).normalized;
+        if(canMove){
+            rigidbody.velocity = new Vector3(dirTemp.x*speed,rigidbody.velocity.y,dirTemp.z*speed);
+            transform.rotation = Quaternion.LookRotation(dirTemp);
+        }
     }
     private void OnCollisionStay(Collision other) {
         if(other.transform.tag == "Ground")
