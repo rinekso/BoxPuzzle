@@ -8,6 +8,8 @@ public class PlayerMovment : MonoBehaviour
     public float speed = 10f;
     public float jumpForce;
     public float dashForce;
+    bool isJump = false;
+    bool jumpPress = false;
     public bool onAir = false;
     public bool canMove = true;
     public bool isDashing = false;
@@ -23,10 +25,11 @@ public class PlayerMovment : MonoBehaviour
         camera = Camera.main;
         fixedJoystick = GameObject.FindObjectOfType<FixedJoystick>();
     }
-    public bool jumpIndicator = false;
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButtonDown("Jump")) Jump();
+
         if(joystick && fixedJoystick){
             horizontal = fixedJoystick.Horizontal;
             vertical = fixedJoystick.Vertical;
@@ -38,13 +41,24 @@ public class PlayerMovment : MonoBehaviour
             if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
                 Move();
         }
-        if(Input.GetButtonDown("Jump")) Jump();
+
+        // print(rigidbody.velocity);
     }
     public void Jump(){
+        isJump = true;
+        jumpPress = true;
+        StartCoroutine(CooldownJump());
         if(onAir == false){
+            print("jump");
             onAir = true;
-            rigidbody.AddForce(Vector3.up*jumpForce);
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
+            rigidbody.velocity = new Vector3(0,jumpForce,0);
         }
+    }
+    IEnumerator CooldownJump(){
+        yield return new WaitForSeconds(.2f);
+        jumpPress = false;
     }
     public void Dash(){
         if(isDashing == false)
@@ -68,16 +82,27 @@ public class PlayerMovment : MonoBehaviour
         Vector3 a = camPos+input;
         dirTemp = Quaternion.Euler(new Vector3(0,camera.transform.rotation.eulerAngles.y,0))*(a-camPos).normalized;
         if(canMove){
-            rigidbody.velocity = new Vector3(dirTemp.x*speed,rigidbody.velocity.y,dirTemp.z*speed);
+            if(!isJump){
+                rigidbody.velocity = new Vector3(dirTemp.x*speed,rigidbody.velocity.y,dirTemp.z*speed);
+            }else{
+                float dif = 1.7f;
+                rigidbody.velocity = new Vector3(dirTemp.x*speed/dif,rigidbody.velocity.y,dirTemp.z*speed/dif);
+            }
             transform.rotation = Quaternion.LookRotation(dirTemp);
         }
     }
     private void OnCollisionStay(Collision other) {
-        if(other.transform.tag == "Ground")
-            onAir = false;
+        if(other.contacts.Length > 0)
+        {
+            ContactPoint contact = other.contacts[0];
+            if(Vector3.Dot(contact.normal, Vector3.up) > 0.5)
+            {
+                onAir = false;
+                if(!jumpPress) isJump = false;
+            }
+        }
     }
     private void OnCollisionExit(Collision other) {
-        if(other.transform.tag == "Ground")
-            onAir = true;
+        onAir = true;
     }
 }
