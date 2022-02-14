@@ -7,6 +7,7 @@ public class PlayerStat : MonoBehaviour
     public GameObject targetObject;
     public Transform objectTemp;
     public Transform placingObject;
+    public bool isFrontEmpty = true;
     public void GrabObject(){
         targetObject.transform.parent = objectTemp;
         targetObject.transform.localPosition = Vector3.zero;
@@ -15,21 +16,11 @@ public class PlayerStat : MonoBehaviour
         targetObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     public void DropObject(){
-        objectTemp.GetChild(0).position = placingObject.position;
-        objectTemp.GetChild(0).parent = transform.parent;
-        targetObject.GetComponent<Rigidbody>().mass = 5;
-        targetObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(isFrontEmpty){
+            objectTemp.GetChild(0).position = placingObject.position;
+            objectTemp.GetChild(0).parent = transform.parent;
+            targetObject.GetComponent<Rigidbody>().mass = 5;
+            targetObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
     }
 }

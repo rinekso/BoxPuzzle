@@ -46,9 +46,11 @@ public class GameController : MonoBehaviour
         grabButton.SetActive(false);
     }
     public void DropObject(){
-        playerStat.DropObject();
-        dropButton.SetActive(false);
-        grabButton.SetActive(true);
+        if(playerStat.isFrontEmpty){
+            playerStat.DropObject();
+            dropButton.SetActive(false);
+            grabButton.SetActive(true);
+        }
     }
     public void Jump(){
         currentPlayer.GetComponent<PlayerMovment>().Jump();
@@ -66,6 +68,13 @@ public class GameController : MonoBehaviour
         Destroy(currentPlayer);
         InitPlayer();
         // player.transform.position = pointStart[currentPointStart].position;
+    }
+
+    public void JumpLevel(int index){
+        StartCoroutine(LevelRuntime(index));
+    }
+    IEnumerator LevelRuntime(int index){
+        yield return new WaitForSeconds(.5f);
     }
 
     // Update is called once per frame
