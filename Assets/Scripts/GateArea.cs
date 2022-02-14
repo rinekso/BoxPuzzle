@@ -6,10 +6,10 @@ public class GateArea : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
-            JumpLevel();    
+            JumpLevel(transform.parent.GetComponent<GateScript>().level);
         }
     }
-    void JumpLevel(){
-        
+    void JumpLevel(int index){
+        GameController.instance.JumpLevel(index);
     }
 }

@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     [Header("Others")]
     public ObjectFollow camPlace;
     public Transform[] pointStart;
+    public Animator animator;
     int currentPointStart = 0;
     private void Awake() {
         instance = this;
@@ -74,7 +75,9 @@ public class GameController : MonoBehaviour
         StartCoroutine(LevelRuntime(index));
     }
     IEnumerator LevelRuntime(int index){
-        yield return new WaitForSeconds(.5f);
+        animator.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        Application.LoadLevel(index);
     }
 
     // Update is called once per frame
