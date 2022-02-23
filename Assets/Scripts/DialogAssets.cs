@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Rinekso.Dialog;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogAssets : MonoBehaviour
@@ -27,7 +28,7 @@ public class DialogAssets : MonoBehaviour
     public struct ActionSet
     {
         public string name;
-        public event Action action;
+        public UnityEvent action;
     }
     private void Awake()
     {
@@ -46,17 +47,20 @@ public class DialogAssets : MonoBehaviour
         container.gameObject.SetActive(true);
         StartCoroutine(StartDialog(index));
     }
+    public void DialogClose(){
+        container.gameObject.SetActive(false);
+    }
     IEnumerator StartDialog(int index){
         for (int i = 0; i < dialogAsset.dialog[index].conversations.Count; i++)
         {
             pictLeft.SetActive(!dialogAsset.dialog[index].conversations[currentConv].isRight);
             pictRight.SetActive(dialogAsset.dialog[index].conversations[currentConv].isRight);
-            print(dialogAsset.dialog[index].conversations[currentConv].charId);
             pictLeft.GetComponent<Image>().sprite = dialogAsset.charImage[dialogAsset.dialog[index].conversations[currentConv].charId].charImage;
             pictRight.GetComponent<Image>().sprite = dialogAsset.charImage[dialogAsset.dialog[index].conversations[currentConv].charId].charImage;
+
             yield return DialogRunning(dialogAsset.dialog[index].conversations[currentConv].conv);
-            if(dialogAsset.dialog[index].conversations[currentConv].action != null){
-                // actionList.Find(x => x.name == dialogAsset.dialog[index].conversations[currentConv].action).action.Invoke();
+            if(dialogAsset.dialog[index].conversations[currentConv].action != ""){
+                actionList.Find(x => x.name == dialogAsset.dialog[index].conversations[currentConv].action).action.Invoke();
             }
             currentConv++;
         }

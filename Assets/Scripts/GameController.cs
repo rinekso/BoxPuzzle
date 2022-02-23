@@ -19,10 +19,12 @@ public class GameController : MonoBehaviour
     public Transform[] pointStart;
     public Animator animator;
     int currentPointStart = 0;
+    [SerializeField]
+    bool initPlayerFirst = false;
     private void Awake() {
         instance = this;
 
-        InitPlayer();
+        if(initPlayerFirst) InitPlayer();
     }
     void InitPlayer(){
         currentPlayer = Instantiate(playerPrefabs);
