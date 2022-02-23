@@ -5,6 +5,6 @@ using UnityEngine;
 public class CinematicEventDialog : MonoBehaviour
 {
     public void InitDialog(){
-        DialogAssets.instance.InitDialog();
+        DialogAssets.instance.InitDialog(0);
     }
 }

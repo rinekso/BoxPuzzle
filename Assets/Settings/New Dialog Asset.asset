@@ -22,32 +22,41 @@ MonoBehaviour:
   dialog:
   - name: Cinematic
     conversations:
-    - charId: 3
-      conv: Stop right there
+    - charId: 2
+      isRight: 1
+      conv: Stop right there!
       action: 
     - charId: 0
+      isRight: 0
       conv: What is wrong sir?
       action: 
-    - charId: 3
+    - charId: 2
+      isRight: 1
       conv: You can't walk with that prisme
       action: 
     - charId: 0
+      isRight: 0
       conv: What? Why?
       action: 
-    - charId: 3
+    - charId: 2
+      isRight: 1
       conv: You're different! Get lost!
       action: 
     - charId: 1
+      isRight: 0
       conv: What? That's not fair
       action: 
-    - charId: 3
+    - charId: 2
+      isRight: 1
       conv: You must listen to your people, Prisme!
       action: 
     - charId: 1
+      isRight: 0
       conv: No, I Won't!
       action: 
-    - charId: 3
-      conv: I think I need to force you!
+    - charId: 2
+      isRight: 1
+      conv: I think I need to use the hard way!
       action: forceTake
   - name: 
     conversations: []

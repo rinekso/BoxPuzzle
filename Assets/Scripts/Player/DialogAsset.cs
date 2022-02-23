@@ -15,7 +15,6 @@ namespace Rinekso.Dialog {
         public string name;
         public Sprite charImage;
     }
-    
     [System.Serializable]
     public struct Dialog
     {
@@ -25,6 +24,7 @@ namespace Rinekso.Dialog {
     [System.Serializable]
     public struct Conversation{
         public int charId;
+        public bool isRight;
         public string conv;
         public string action;
     }
