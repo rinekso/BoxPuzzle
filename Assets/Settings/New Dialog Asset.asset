@@ -52,11 +52,15 @@ MonoBehaviour:
       action: 
     - charId: 1
       isRight: 0
-      conv: No, I Won't!
+      conv: No, I won't!
       action: 
     - charId: 2
       isRight: 1
       conv: I think I need to use the hard way!
       action: forceTake
-  - name: 
-    conversations: []
+  - name: Prisme
+    conversations:
+    - charId: 0
+      isRight: 0
+      conv: Aku harus menyelamatkan Prisme
+      action: 

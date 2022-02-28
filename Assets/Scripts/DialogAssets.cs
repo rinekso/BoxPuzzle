@@ -18,6 +18,7 @@ public class DialogAssets : MonoBehaviour
     Transform container;
     [SerializeField]
     bool autoNext;
+    public bool next = false;
     [SerializeField]
     float speedWord;
     [SerializeField]
@@ -61,11 +62,16 @@ public class DialogAssets : MonoBehaviour
             yield return DialogRunning(dialogAsset.dialog[index].conversations[currentConv].conv);
             if(dialogAsset.dialog[index].conversations[currentConv].action != ""){
                 actionList.Find(x => x.name == dialogAsset.dialog[index].conversations[currentConv].action).action.Invoke();
+            }else{
+
             }
             currentConv++;
         }
         currentConv = 0;
-
+        DialogClose();
+    }
+    public void NextDialog(){
+        next = true;
     }
     IEnumerator DialogRunning(string conv){
         dialog.text = "";
@@ -74,9 +80,12 @@ public class DialogAssets : MonoBehaviour
             yield return new WaitForSeconds(speedWord);
             dialog.text += conv[i];
         }
-        while (!autoNext)
-        {
-            yield return null;            
+        if(!autoNext){
+            while (!next)
+            {
+                yield return null;
+            }
+            next = false;
         }
         yield return new WaitForSeconds(convDelay);
     }
