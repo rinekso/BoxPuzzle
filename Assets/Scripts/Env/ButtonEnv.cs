@@ -15,6 +15,7 @@ public class ButtonEnv : MonoBehaviour
             currentObject = other.gameObject;
             GetComponent<Animator>().SetBool("active",true);
             platformTarget.GetComponent<IPlatformInterface>().OnActive();
+            GameObject.FindObjectOfType<RotationCam>().GetFar();
             isActive = true;
         }
     }
@@ -22,6 +23,7 @@ public class ButtonEnv : MonoBehaviour
         if(isActive && other.gameObject == currentObject){
             GetComponent<Animator>().SetBool("active",false);
             platformTarget.GetComponent<IPlatformInterface>().OnDeactive();
+            GameObject.FindObjectOfType<RotationCam>().GetClose();
             isActive = false;
         }
     }
