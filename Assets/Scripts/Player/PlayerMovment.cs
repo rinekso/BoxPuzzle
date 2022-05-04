@@ -8,6 +8,8 @@ public class PlayerMovment : MonoBehaviour
     public float speed = 10f;
     public float jumpForce;
     public float dashForce;
+    [SerializeField]
+    bool jumpable = true;
     bool isJump = false;
     bool jumpPress = false;
     public bool onAir = false;
@@ -18,6 +20,12 @@ public class PlayerMovment : MonoBehaviour
     FixedJoystick fixedJoystick;
     public bool joystick;
     float horizontal, vertical;
+    [SerializeField]
+    Transform pointHinge;
+    [SerializeField]
+    float maxDistance = 11;
+    float distance;
+    bool distancePass = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +38,13 @@ public class PlayerMovment : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump")) Jump();
 
+        distance = Vector3.Distance(transform.position,pointHinge.position);
+        if(distance > maxDistance){
+            rigidbody.isKinematic = false;
+        }else{
+            rigidbody.isKinematic = true;
+        }
+
         if(joystick && fixedJoystick){
             horizontal = fixedJoystick.Horizontal;
             vertical = fixedJoystick.Vertical;
@@ -41,19 +56,20 @@ public class PlayerMovment : MonoBehaviour
             if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
                 Move();
         }
-
-        // print(rigidbody.velocity);
+        print(rigidbody.velocity.magnitude);
     }
     public void Jump(){
-        isJump = true;
-        jumpPress = true;
-        StartCoroutine(CooldownJump());
-        if(onAir == false){
-            print("jump");
-            onAir = true;
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.angularVelocity = Vector3.zero;
-            rigidbody.velocity = new Vector3(0,jumpForce,0);
+        if(jumpable){
+            isJump = true;
+            jumpPress = true;
+            StartCoroutine(CooldownJump());
+            if(onAir == false){
+                print("jump");
+                onAir = true;
+                rigidbody.velocity = Vector3.zero;
+                rigidbody.angularVelocity = Vector3.zero;
+                rigidbody.velocity = new Vector3(0,jumpForce,0);
+            }
         }
     }
     IEnumerator CooldownJump(){
@@ -82,13 +98,31 @@ public class PlayerMovment : MonoBehaviour
         Vector3 a = camPos+input;
         dirTemp = Quaternion.Euler(new Vector3(0,camera.transform.rotation.eulerAngles.y,0))*(a-camPos).normalized;
         if(canMove){
-            if(!isJump){
-                rigidbody.velocity = new Vector3(dirTemp.x*speed,rigidbody.velocity.y,dirTemp.z*speed);
+            if(rigidbody.isKinematic){
+                Vector3 positionTemp = transform.position;
+                positionTemp.y = -0.29f;
+                if(!isJump){
+                    positionTemp += new Vector3(dirTemp.x*(speed*.01f),0,dirTemp.z*(speed*.01f));
+                }else{
+                    float dif = 1.7f;
+                    positionTemp += new Vector3(dirTemp.x*(speed*.01f)/dif,0,dirTemp.z*(speed*.01f)/dif);
+                }
+                transform.position = positionTemp;
             }else{
-                float dif = 1.7f;
-                rigidbody.velocity = new Vector3(dirTemp.x*speed/dif,rigidbody.velocity.y,dirTemp.z*speed/dif);
+                if(rigidbody.velocity.magnitude < 19)
+                    if(!isJump){
+                        rigidbody.velocity = new Vector3(dirTemp.x*speed*2f,rigidbody.velocity.y,dirTemp.z*speed*2f);
+                    }else{
+                        float dif = 1.7f;
+                        rigidbody.velocity = new Vector3(dirTemp.x*speed*2f/dif,rigidbody.velocity.y,dirTemp.z*speed*2f/dif);
+                    }
             }
-            transform.rotation = Quaternion.LookRotation(dirTemp);
+            // if(distancePass){
+            //     if(distance < Vector3.Distance(positionTemp,pointHinge.position)){
+            //         positionTemp = transform.position;
+            //     }
+            // }
+            // transform.rotation = Quaternion.LookRotation(dirTemp);
         }
     }
     private void OnCollisionStay(Collision other) {

@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
         if(initPlayerFirst) InitPlayer();
     }
     void InitPlayer(){
-        currentPlayer = Instantiate(playerPrefabs);
+        // currentPlayer = Instantiate(playerPrefabs);
         playerStat = currentPlayer.GetComponent<PlayerStat>();
         currentPlayer.transform.position = pointStart[currentPointStart].position;
         camPlace.target = currentPlayer.transform;
