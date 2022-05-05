@@ -20,43 +20,35 @@ public class PlayerMovment : MonoBehaviour
     FixedJoystick fixedJoystick;
     public bool joystick;
     float horizontal, vertical;
-    [SerializeField]
-    Transform pointHinge;
-    [SerializeField]
-    float maxDistance = 11;
-    float distance;
-    bool distancePass = false;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         camera = Camera.main;
         fixedJoystick = GameObject.FindObjectOfType<FixedJoystick>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetButtonDown("Jump")) Jump();
 
-        distance = Vector3.Distance(transform.position,pointHinge.position);
-        if(distance > maxDistance){
-            rigidbody.isKinematic = false;
-        }else{
-            rigidbody.isKinematic = true;
-        }
-
         if(joystick && fixedJoystick){
             horizontal = fixedJoystick.Horizontal;
             vertical = fixedJoystick.Vertical;
             if(horizontal != 0 && vertical != 0)
                 Move();
+            else
+                animator.SetBool("Move",false);
         }else{
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
             if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
                 Move();
+            else
+                animator.SetBool("Move",false);
         }
-        print(rigidbody.velocity.magnitude);
     }
     public void Jump(){
         if(jumpable){
@@ -92,38 +84,28 @@ public class PlayerMovment : MonoBehaviour
         isDashing = false;
     }
     void Move(){
+        animator.SetBool("Move",true);
+        animator.SetFloat("Horizontal",horizontal);
+
         Vector3 input = new Vector3(horizontal,0,vertical);
         Vector3 camPos = camera.transform.position;
 
         Vector3 a = camPos+input;
         dirTemp = Quaternion.Euler(new Vector3(0,camera.transform.rotation.eulerAngles.y,0))*(a-camPos).normalized;
         if(canMove){
-            if(rigidbody.isKinematic){
-                Vector3 positionTemp = transform.position;
-                positionTemp.y = -0.29f;
-                if(!isJump){
-                    positionTemp += new Vector3(dirTemp.x*(speed*.01f),0,dirTemp.z*(speed*.01f));
-                }else{
-                    float dif = 1.7f;
-                    positionTemp += new Vector3(dirTemp.x*(speed*.01f)/dif,0,dirTemp.z*(speed*.01f)/dif);
-                }
-                transform.position = positionTemp;
+            if(!isJump){
+                rigidbody.velocity = new Vector3(dirTemp.x*speed,rigidbody.velocity.y,dirTemp.z*speed);
             }else{
-                if(rigidbody.velocity.magnitude < 19)
-                    if(!isJump){
-                        rigidbody.velocity = new Vector3(dirTemp.x*speed*2f,rigidbody.velocity.y,dirTemp.z*speed*2f);
-                    }else{
-                        float dif = 1.7f;
-                        rigidbody.velocity = new Vector3(dirTemp.x*speed*2f/dif,rigidbody.velocity.y,dirTemp.z*speed*2f/dif);
-                    }
+                float dif = 1.7f;
+                rigidbody.velocity = new Vector3(dirTemp.x*speed/dif,rigidbody.velocity.y,dirTemp.z*speed/dif);
             }
+        }
             // if(distancePass){
             //     if(distance < Vector3.Distance(positionTemp,pointHinge.position)){
             //         positionTemp = transform.position;
             //     }
             // }
             // transform.rotation = Quaternion.LookRotation(dirTemp);
-        }
     }
     private void OnCollisionStay(Collision other) {
         if(other.contacts.Length > 0)

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: New Dialog Asset
   m_EditorClassIdentifier: 
   charImage:
-  - name: Box
+  - name: Me
     charImage: {fileID: 21300000, guid: 6033b683aaceaa4429c2de7dbaee20a4, type: 3}
-  - name: Prisme
+  - name: Jack
     charImage: {fileID: 21300000, guid: a2f6c2589853d6948a94b601eec7d4a5, type: 3}
-  - name: Diamond
+  - name: Me2
     charImage: {fileID: 21300000, guid: e7c0d938c020dfe4ba3599dfa29c50f1, type: 3}
   dialog:
   - name: Cinematic
