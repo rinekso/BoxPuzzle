@@ -18,5 +18,6 @@ public class PlayerDialogController : MonoBehaviour
     }
     public void ShowNotif(bool set){
         notifUI.SetActive(set);
+        GameController.instance.ActiveInteraction(set);
     }
 }

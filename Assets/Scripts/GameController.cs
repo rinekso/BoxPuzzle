@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public enum Interaction
+    {
+        Dialog, Action, Get, Put
+    }
     public static GameController instance;
     [Header("UI")]
+    public GameObject interactButton;
     public GameObject grabButton;
     public GameObject dropButton;
     public Button jumpButton;
@@ -21,6 +26,8 @@ public class GameController : MonoBehaviour
     int currentPointStart = 0;
     [SerializeField]
     bool initPlayerFirst = false;
+    public Interaction currentTypeInteraction;
+    public int currentIdInteraction;
     private void Awake() {
         instance = this;
 
@@ -37,6 +44,9 @@ public class GameController : MonoBehaviour
     }
     public void ActiveGrab(bool stat){
         grabButton.SetActive(stat);
+    }
+    public void ActiveInteraction(bool stat){
+        interactButton.SetActive(stat);
     }
     public void SetObjectToPlayer(GameObject target){
         playerStat.targetObject = target;
@@ -78,6 +88,25 @@ public class GameController : MonoBehaviour
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
         Application.LoadLevel(index);
+    }
+    public void DoInteraction(){
+        switch (currentTypeInteraction)
+        {
+            case Interaction.Dialog:
+                DialogAssets.instance.InitDialog(currentIdInteraction);
+            break;
+            case Interaction.Action:
+            
+            break;
+            case Interaction.Get:
+            
+            break;
+            case Interaction.Put:
+
+            break;
+            default:
+            break;
+        }
     }
 
     // Update is called once per frame

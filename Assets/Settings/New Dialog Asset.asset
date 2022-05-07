@@ -14,50 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charImage:
   - name: Me
-    charImage: {fileID: 21300000, guid: 6033b683aaceaa4429c2de7dbaee20a4, type: 3}
+    charImage: {fileID: 21300000, guid: 32f3df2cdda52d54b9849205992833d0, type: 3}
   - name: Jack
-    charImage: {fileID: 21300000, guid: a2f6c2589853d6948a94b601eec7d4a5, type: 3}
-  - name: Me2
-    charImage: {fileID: 21300000, guid: e7c0d938c020dfe4ba3599dfa29c50f1, type: 3}
+    charImage: {fileID: 21300000, guid: 0d69d848577e379448bb605645e36674, type: 3}
+  - name: Hat Person
+    charImage: {fileID: 21300000, guid: f42f198c7b2b6ef44badf1d19e00a8c9, type: 3}
   dialog:
-  - name: Cinematic
+  - name: Hatty-1
     conversations:
-    - charId: 2
+    - charId: 0
       isRight: 1
-      conv: Stop right there!
+      conv: Hi! Did you know this place is?
+      action: 
+    - charId: 2
+      isRight: 0
+      conv: Did someone speaking to me?
       action: 
     - charId: 0
-      isRight: 0
-      conv: What is wrong sir?
+      isRight: 1
+      conv: Hey, I'm literally speaking to you. I'm in front of you!
       action: 
     - charId: 2
-      isRight: 1
-      conv: You can't walk with that prisme
+      isRight: 0
+      conv: .........
       action: 
     - charId: 0
-      isRight: 0
-      conv: What? Why?
-      action: 
-    - charId: 2
       isRight: 1
-      conv: You're different! Get lost!
+      conv: Okay fine. I'll just ask to other people
       action: 
-    - charId: 1
-      isRight: 0
-      conv: What? That's not fair
-      action: 
-    - charId: 2
-      isRight: 1
-      conv: You must listen to your people, Prisme!
-      action: 
-    - charId: 1
-      isRight: 0
-      conv: No, I won't!
-      action: 
-    - charId: 2
-      isRight: 1
-      conv: I think I need to use the hard way!
-      action: forceTake
   - name: Prisme
     conversations:
     - charId: 0

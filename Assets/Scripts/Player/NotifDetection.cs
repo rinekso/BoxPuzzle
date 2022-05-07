@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class NotifDetection : MonoBehaviour
 {
+    public GameController.Interaction interaction;
+    public int id;
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
             other.GetComponent<PlayerDialogController>().ShowNotif(true);
-        }        
+            GameController.instance.currentIdInteraction = id;
+            GameController.instance.currentTypeInteraction = interaction;
+        }
     }
     void OnTriggerExit(Collider other)
     {
