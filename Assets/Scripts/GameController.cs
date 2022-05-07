@@ -34,8 +34,6 @@ public class GameController : MonoBehaviour
 
         dropButton.SetActive(false);
         grabButton.SetActive(false);
-
-        
     }
     public void ActiveGrab(bool stat){
         grabButton.SetActive(stat);
