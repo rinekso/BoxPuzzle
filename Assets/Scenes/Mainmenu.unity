@@ -1548,23 +1548,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7233510616273874530, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024040631271, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024040631271, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024040631271, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 705
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024040631271, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024612309146, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_IsActive
@@ -1572,20 +1572,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024666121523, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024666121523, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024666121523, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1415
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994814024666121523, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7994814024666121524, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d69d848577e379448bb605645e36674, type: 3}
     - target: {fileID: 7994814024963583196, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
       propertyPath: m_Name
       value: DialogSection
@@ -1674,6 +1678,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7994814025186139428, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 32f3df2cdda52d54b9849205992833d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb738436ddb0ba74883cb9356ccad327, type: 3}
 --- !u!224 &691494037 stripped
