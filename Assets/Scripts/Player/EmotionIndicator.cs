@@ -4,27 +4,48 @@ using UnityEngine;
 
 public class EmotionIndicator : MonoBehaviour
 {
-    public Transform dot;
+    [System.Serializable]
+    public struct Dot
+    {
+        public string name;
+        public Transform point;
+    }
+    public List<Dot> dots;
     PlayerChar playerChar;
+    [SerializeField]
+    LineRenderer lineRenderer;
     // Start is called before the first frame update
     void Start()
     {
         playerChar = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerChar>();
-        UpdatePoint();
+        lineRenderer.positionCount = dots.Count;
+        // UpdatePoint();
     }
     // [Button("asd")]
     public void UpdatePoint(){
-        float totalAngerCalm = playerChar.angerPoint+playerChar.calmPoint;
-        float totalSeriousFunny = playerChar.seriousPoint+playerChar.funnyPoint;
-
-        RectTransform rectTransform = dot.GetComponent<RectTransform>();
+        PointSet(dots[0].point,playerChar.Openness);
+        PointSet(dots[1].point,playerChar.Extraversion);
+        PointSet(dots[2].point,playerChar.Consceintiousness);
+        PointSet(dots[3].point,playerChar.Neuroticism);
+        PointSet(dots[4].point,playerChar.Agreebleness);
+        SpawnLine();
+    }
+    void SpawnLine(){
+        for (int i = 0; i < dots.Count; i++)
+        {
+            lineRenderer.SetPosition(i,dots[i].point.position);
+        }
+    }
+    void PointSet(Transform target, float value){
+        RectTransform rectTransform = target.GetComponent<RectTransform>();
         Vector2 newPos = new Vector2(
-            (float)(playerChar.funnyPoint/totalSeriousFunny)*300,
-            (float)(playerChar.angerPoint/totalAngerCalm)*300
+            0,
+            value
         );
         rectTransform.anchoredPosition = newPos;
     }
     void Update()
     {
+        UpdatePoint();
     }
 }

@@ -22,10 +22,19 @@ namespace Rinekso.Dialog {
         public List<Conversation> conversations;
     }
     [System.Serializable]
+    public struct Choice
+    {
+        public string textDisplay;
+        public bool openDialog;
+        public int dialogId;
+        public string action;
+    }
+    [System.Serializable]
     public struct Conversation{
         public int charId;
         public bool isRight;
         public string conv;
         public string action;
+        public Choice[] choices;
     }
 }

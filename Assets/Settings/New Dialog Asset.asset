@@ -26,25 +26,39 @@ MonoBehaviour:
       isRight: 1
       conv: Hi! Did you know this place is?
       action: 
+      choices: []
     - charId: 2
       isRight: 0
       conv: Did someone speaking to me?
       action: 
+      choices: []
     - charId: 0
       isRight: 1
       conv: Hey, I'm literally speaking to you. I'm in front of you!
       action: 
+      choices: []
     - charId: 2
       isRight: 0
       conv: .........
       action: 
+      choices: []
     - charId: 0
       isRight: 1
       conv: Okay fine. I'll just ask to other people
       action: 
-  - name: Prisme
+      choices:
+      - textDisplay: Keep Asking
+        openDialog: 1
+        dialogId: 0
+        action: 
+      - textDisplay: End Conversation
+        openDialog: 0
+        dialogId: 0
+        action: EndConv
+  - name: Keep Asking Hatty
     conversations:
     - charId: 0
       isRight: 0
       conv: Aku harus menyelamatkan Prisme
       action: 
+      choices: []
