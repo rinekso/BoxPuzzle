@@ -19,7 +19,8 @@ public class EmotionIndicator : MonoBehaviour
     {
         playerChar = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerChar>();
         lineRenderer.positionCount = dots.Count;
-        // UpdatePoint();
+        UpdatePoint();
+        SpawnLine();
     }
     // [Button("asd")]
     public void UpdatePoint(){
@@ -28,7 +29,6 @@ public class EmotionIndicator : MonoBehaviour
         PointSet(dots[2].point,playerChar.Consceintiousness);
         PointSet(dots[3].point,playerChar.Neuroticism);
         PointSet(dots[4].point,playerChar.Agreebleness);
-        SpawnLine();
     }
     void SpawnLine(){
         for (int i = 0; i < dots.Count; i++)
@@ -46,6 +46,6 @@ public class EmotionIndicator : MonoBehaviour
     }
     void Update()
     {
-        UpdatePoint();
+        // SpawnLine();
     }
 }
