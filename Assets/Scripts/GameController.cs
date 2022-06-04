@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GameController : MonoBehaviour
     [Header("Player")]
     public GameObject playerPrefabs;
     public GameObject currentPlayer;
+    public GameObject mainPlayer;
     PlayerStat playerStat;
     [Header("Others")]
     public ObjectFollow camPlace;
@@ -28,6 +30,7 @@ public class GameController : MonoBehaviour
     bool initPlayerFirst = false;
     public Interaction currentTypeInteraction;
     public int currentIdInteraction;
+    public GameObject currentGOInteraction;
     private void Awake() {
         instance = this;
 
@@ -89,6 +92,25 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Application.LoadLevel(index);
     }
+    void InteractObject(){
+        currentGOInteraction.GetComponent<Interactor>().Action();
+        currentPlayer.GetComponentInChildren<MainPlayerScript>().StopMonolog();
+    }
+    public void MoveMain(Vector3 target, float speed, float delay, UnityAction callback = null){
+        StartCoroutine(Move(mainPlayer,target,speed,delay,callback));
+    }
+    IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null){
+        yield return new WaitForSeconds(delay);
+        Vector3 start = target.transform.position;
+        Vector3 direction = (endPoint-start).normalized;
+        while (Vector3.Distance(endPoint,target.transform.position) > .1f)
+        {
+            target.transform.position = target.transform.position + direction * speed * Time.deltaTime;
+            yield return null;
+        }
+        callback.Invoke();
+        // target.transform.position = endPoint;
+    }
     public void DoInteraction(){
         switch (currentTypeInteraction)
         {
@@ -96,7 +118,7 @@ public class GameController : MonoBehaviour
                 DialogAssets.instance.InitDialog(currentIdInteraction);
             break;
             case Interaction.Action:
-            
+                InteractObject();
             break;
             case Interaction.Get:
             

@@ -62,3 +62,47 @@ MonoBehaviour:
       conv: Aku harus menyelamatkan Prisme
       action: 
       choices: []
+  - name: Shaking-Tree
+    conversations:
+    - charId: 1
+      isRight: 1
+      conv: That tree was moving.
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: Wierd
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: In this silent palce, how can this tree move like that?
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: Like someone shake it with some kind of purpose
+      action: 
+      choices: []
+  - name: Shaking-Tree-2
+    conversations:
+    - charId: 1
+      isRight: 1
+      conv: Again?
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: What the hell is that?
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: ....
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: Oh, there is a people. Let me ask a couple question
+      action: 
+      choices: []

@@ -16,8 +16,12 @@ public class PlayerDialogController : MonoBehaviour
     {
         
     }
-    public void ShowNotif(bool set){
-        notifUI.SetActive(set);
+    public void ShowNotif(bool set, Vector3 position){
+        GameObject notif = GameObject.Find("Notif");
+        notif.transform.position = position;
+        notif.transform.GetChild(0).gameObject.SetActive(set);
+
+        // notifUI.SetActive(set);
         GameController.instance.ActiveInteraction(set);
     }
 }

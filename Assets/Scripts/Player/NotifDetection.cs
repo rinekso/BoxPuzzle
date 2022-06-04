@@ -8,7 +8,8 @@ public class NotifDetection : MonoBehaviour
     public int id;
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
-            other.GetComponent<PlayerDialogController>().ShowNotif(true);
+            other.GetComponent<PlayerDialogController>().ShowNotif(true, transform.position);
+            GameController.instance.currentGOInteraction = gameObject;
             GameController.instance.currentIdInteraction = id;
             GameController.instance.currentTypeInteraction = interaction;
         }
@@ -16,7 +17,7 @@ public class NotifDetection : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if(other.tag == "Player"){
-            other.GetComponent<PlayerDialogController>().ShowNotif(false);
+            other.GetComponent<PlayerDialogController>().ShowNotif(false, transform.position);
         }
     }
 }

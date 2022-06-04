@@ -30,6 +30,8 @@ public class DialogAssets : MonoBehaviour
     int currentConv;
     [SerializeField]
     GameObject buttonChoice;
+    [SerializeField]
+    bool canMoveWhenDialog = false;
     bool choosed = false;
     public List<ActionSet> actionList;
     [System.Serializable]
@@ -51,7 +53,8 @@ public class DialogAssets : MonoBehaviour
         }
     }
     public void InitDialog(int index){
-        GameController.instance.currentPlayer.GetComponent<PlayerMovment>().canMove = false;
+        if(!canMoveWhenDialog)
+            GameController.instance.currentPlayer.GetComponent<PlayerMovment>().canMove = false;
         currentConv = 0;
         container.gameObject.SetActive(true);
         containerDialog.gameObject.SetActive(true);
@@ -123,7 +126,7 @@ public class DialogAssets : MonoBehaviour
             Destroy(target.GetChild(i).gameObject);
         }
     }
-    IEnumerator DialogRunning(string conv){
+    public IEnumerator DialogRunning(string conv){
         dialog.text = "";
         for (int i = 0; i < conv.Length; i++)
         {
