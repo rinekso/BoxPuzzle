@@ -14,4 +14,7 @@ public class TreeAction : MonoBehaviour,Interactor
             DialogAssets.instance.InitDialog(dialogInitAfter);
         });
     }
+    public void HardShake(){
+        GetComponent<Animator>().SetTrigger("hardtrigger");
+    }
 }

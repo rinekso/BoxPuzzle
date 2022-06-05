@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f037db59d9644a44adfbe488c68bdc2, type: 3}
+  m_Name: Monolog Girl Tree
+  m_EditorClassIdentifier: 
+  dialog:
+  - place: tree
+    action: 
+    conv:
+    - What is wrong with me?
+    - i'm so DUMB!
+    - WHY I AM SO DUMB!
+    - I have to make him happy
+    - I need gold, silver, diamond
+    - gold, silver, diamond
+    - for my love
+    - come on useless brain!!!
+  - place: rock
+    action: 
+    conv:
+    - What is that?
+    - Oh, just rock
+    - I think that was a gold or something
