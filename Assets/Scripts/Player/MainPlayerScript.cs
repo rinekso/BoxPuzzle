@@ -21,14 +21,14 @@ public class MainPlayerScript : MonoBehaviour
     public void StartMonolog(string monolog, bool reset = true){
         resetDialog = reset;
         currentConv = 0;
-        Monolog result = monologAsset.dialog.FindLast(delegate (Monolog x)
+        List<Monolog> result = monologAsset.dialog.FindAll(delegate (Monolog x)
         {
             return x.place == monolog;
         });
         if(dialogTemp != null)
             StopCoroutine(dialogTemp);
-
-        dialogTemp = StartCoroutine(StartDialog(result));
+        if(result.Count > 0)
+            dialogTemp = StartCoroutine(StartDialog(result[0]));
     }
     public void StopMonolog(){
         containerText.gameObject.SetActive(false);

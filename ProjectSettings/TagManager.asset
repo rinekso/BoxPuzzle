@@ -8,6 +8,7 @@ TagManager:
   - Dead
   - Main
   - Triggerer
+  - Monolog
   layers:
   - Default
   - TransparentFX

@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
     public int currentIdInteraction;
     public GameObject currentGOInteraction;
     private void Awake() {
+        PlayerPrefs.DeleteAll();
         instance = this;
 
         if(initPlayerFirst) InitPlayer();

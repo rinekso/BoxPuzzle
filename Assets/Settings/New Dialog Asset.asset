@@ -101,3 +101,10 @@ MonoBehaviour:
       conv: ....
       action: 
       choices: []
+  - name: Torch-Failed
+    conversations:
+    - charId: 1
+      isRight: 1
+      conv: I need to light this torch so I can go through the mist
+      action: 
+      choices: []
