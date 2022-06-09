@@ -108,3 +108,20 @@ MonoBehaviour:
       conv: I need to light this torch so I can go through the mist
       action: 
       choices: []
+  - name: Girl-Detect
+    conversations:
+    - charId: 1
+      isRight: 1
+      conv: What is that?
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: Is that a girl?
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 1
+      conv: She hurt her self, OMG!
+      action: ComeCloserToGirl
+      choices: []
