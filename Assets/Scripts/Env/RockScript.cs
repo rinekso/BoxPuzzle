@@ -5,7 +5,7 @@ using UnityEngine;
 public class RockScript : MonoBehaviour, Interactor
 {
     public void Action(){
-        
+        Inventory.instance.AddItem("rock",4);
     }
     // Start is called before the first frame update
     void Start()

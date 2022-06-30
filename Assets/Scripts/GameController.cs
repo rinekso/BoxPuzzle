@@ -97,20 +97,14 @@ public class GameController : MonoBehaviour
         currentGOInteraction.GetComponent<Interactor>().Action();
         currentPlayer.GetComponentInChildren<MainPlayerScript>().StopMonolog();
     }
-    public void MoveMain(Vector3 target, float speed, float delay, UnityAction callback = null, float distance = 0){
-        if(distance > 0){
-            Vector3 dir = (mainPlayer.transform.position-target).normalized;
-            print(target);
-            target = target+(dir*distance);
-            print(target);
-        }
-        StartCoroutine(Move(mainPlayer,target,speed,delay,callback));
+    public void MoveMain(Vector3 target, float speed, float delay, UnityAction callback = null, float distance = .2f){
+        StartCoroutine(Move(mainPlayer,target,speed,delay,callback, distance));
     }
-    IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null){
+    IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
         yield return new WaitForSeconds(delay);
         Vector3 start = target.transform.position;
         Vector3 direction = (endPoint-start).normalized;
-        while (Vector3.Distance(endPoint,target.transform.position) > .2f)
+        while (Vector3.Distance(endPoint,target.transform.position) > distance)
         {
             target.transform.position = target.transform.position + direction * speed * Time.deltaTime;
             yield return null;
