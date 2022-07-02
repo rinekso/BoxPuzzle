@@ -98,6 +98,7 @@ public class GameController : MonoBehaviour
         currentPlayer.GetComponentInChildren<MainPlayerScript>().StopMonolog();
     }
     public void MoveMain(Vector3 target, float speed, float delay, UnityAction callback = null, float distance = .2f){
+        // print(target);
         StartCoroutine(Move(mainPlayer,target,speed,delay,callback, distance));
     }
     IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){

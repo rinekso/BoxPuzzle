@@ -5,6 +5,7 @@ using UnityEngine;
 public class TreeAction : MonoBehaviour,Interactor
 {
     public Transform point;
+    public Transform point2;
     public float speed;
     public float delay;
     public int[] dialogInitAfter;

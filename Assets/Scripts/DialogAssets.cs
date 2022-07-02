@@ -53,6 +53,7 @@ public class DialogAssets : MonoBehaviour
         }
     }
     public void InitDialog(int index){
+        print("dialog"+index);
         if(!canMoveWhenDialog)
             GameController.instance.currentPlayer.GetComponent<PlayerMovment>().canMove = false;
         currentConv = 0;

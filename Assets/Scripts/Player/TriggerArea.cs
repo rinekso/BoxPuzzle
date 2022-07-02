@@ -13,6 +13,7 @@ public class TriggerArea : MonoBehaviour
         }
     }
     private void OnTriggerExit(Collider other) {
+        if(!GetComponent<Collider>().isTrigger) return;
         if(other.tag == "Triggerer"){
             triggers.Remove(other.gameObject);
         }
