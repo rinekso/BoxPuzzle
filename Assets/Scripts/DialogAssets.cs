@@ -52,16 +52,22 @@ public class DialogAssets : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void InitDialog(int index){
-        print("dialog"+index);
+    void PrepareDialog(){
         if(!canMoveWhenDialog)
             GameController.instance.currentPlayer.GetComponent<PlayerMovment>().canMove = false;
         currentConv = 0;
         container.gameObject.SetActive(true);
         containerDialog.gameObject.SetActive(true);
         containerChoice.gameObject.SetActive(false);
-        StopAllCoroutines();
+        StopAllCoroutines();        
+    }
+    public void InitDialog(int index){
+        PrepareDialog();
         StartCoroutine(StartDialog(index));
+    }
+    public void InitDialog(string name){
+        PrepareDialog();
+        StartCoroutine(StartDialog(dialogAsset.dialog.FindIndex(0,dialogAsset.dialog.Count,x => x.name == name)));
     }
     public void DialogClose(){
         container.gameObject.SetActive(false);

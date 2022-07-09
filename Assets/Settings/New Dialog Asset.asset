@@ -19,6 +19,8 @@ MonoBehaviour:
     charImage: {fileID: 21300000, guid: 0d69d848577e379448bb605645e36674, type: 3}
   - name: Hat Person
     charImage: {fileID: 21300000, guid: f42f198c7b2b6ef44badf1d19e00a8c9, type: 3}
+  - name: Girl Tree
+    charImage: {fileID: 21300000, guid: 561507a38cdd93a419c713b4cafd85f5, type: 3}
   dialog:
   - name: Hatty-1
     conversations:
@@ -124,4 +126,77 @@ MonoBehaviour:
       isRight: 1
       conv: She hurt her self, OMG!
       action: ComeCloserToGirl
+      choices: []
+  - name: Girl-Talk
+    conversations:
+    - charId: 1
+      isRight: 0
+      conv: Hey, Stop doing that!
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: So What?
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: You hurt your self
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: He needs gold, and I dumb enough to make him piss.
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: He? Who?
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: My Love
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: He used you to find gold? He don't deserve you
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: But I need him
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: No, you don't. You can walk away and being yourself
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: He is myself, I need gold, diamond, silver, anything to make him smile,
+        I want him to be happy
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: And you are not
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: "Who cares, he is my world, so shut the fuck up! I need to think\u2026"
+      action: 
+      choices: []
+    - charId: 3
+      isRight: 1
+      conv: WHY I AM SO DUMB??!!
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I can't say anything else.
+      action: 
       choices: []
