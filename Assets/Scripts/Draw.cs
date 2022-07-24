@@ -53,7 +53,7 @@ public class Draw : MonoBehaviour
         Vector3 intoPlane = Vector3.forward;
         Vector3 toTarget = pointA - pointB;
         image.rectTransform.rotation = Quaternion.LookRotation(intoPlane,-toTarget);
-        image.rectTransform.sizeDelta = new Vector2(width,Vector2.Distance(pointA,pointB)+widthLine/2+2);
+        image.rectTransform.sizeDelta = new Vector2(width,Vector2.Distance(pointA,pointB)+widthLine/2);
         image.rectTransform.position = Vector2.Lerp(pointA,pointB,0.5f);
         image.color = colorLine;
 	}

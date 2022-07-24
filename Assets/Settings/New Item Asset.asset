@@ -15,4 +15,5 @@ MonoBehaviour:
   items:
   - name: rock
     icon: {fileID: 21300000, guid: 344821b78584b7346ba97595c4928fe7, type: 3}
+    maxValue: 10
     prefabs: {fileID: 0}

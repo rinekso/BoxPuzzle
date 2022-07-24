@@ -30,7 +30,10 @@ public class Inventory : MonoBehaviour
         InventoryItem tempItem = new InventoryItem();
         if(searchItem.item.name != null){
             tempItem = currentInventory[currentInventory.IndexOf(searchItem)];
-            tempItem.value += val;
+            if(tempItem.value+val <= itemKind.maxValue)
+                tempItem.value += val;
+            else
+                tempItem.value = itemKind.maxValue;
             currentInventory[currentInventory.IndexOf(searchItem)] = tempItem;
         }else{
             tempItem.item = itemKind;
