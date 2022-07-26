@@ -9,6 +9,7 @@ TagManager:
   - Main
   - Triggerer
   - Monolog
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

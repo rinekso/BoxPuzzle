@@ -6,12 +6,17 @@ using TMPro;
 
 public class InventoryUIScript : MonoBehaviour
 {
+    public static InventoryUIScript instance;
     [SerializeField]
     GameObject inventoryPanel;
     [SerializeField]
     Inventory inventory;
+    public GameObject BackgroundBlack;
 
     public GameObject itemUiPrefabs;
+    private void Awake() {
+        instance = this;
+    }
 
     public void OpenInventory(bool val){
         inventoryPanel.SetActive(val);
