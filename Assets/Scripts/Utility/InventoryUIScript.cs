@@ -22,17 +22,22 @@ public class InventoryUIScript : MonoBehaviour
         inventoryPanel.SetActive(val);
         if(val) RefreshItem();
     }
-    void RefreshItem(){
+    public void RefreshItem(){
         Transform container = inventoryPanel.transform.GetChild(0);
         DeleteAllItem(container);
-        foreach (var item in inventory.currentInventory)
-        {
-            GameObject go = Instantiate(itemUiPrefabs,container);
-            ApplyItemUI(go, item);
-        }
+        int key = 0;
+        // print("refresh item length = "+inventory.currentInventory.Count);
+        if(inventory.currentInventory.Count > 0)
+            foreach (var item in inventory.currentInventory)
+            {
+                GameObject go = Instantiate(itemUiPrefabs,container);
+                ApplyItemUI(go, item, key);
+                key++;
+            }
     }
-    void ApplyItemUI(GameObject item, Inventory.InventoryItem data){
+    void ApplyItemUI(GameObject item, Inventory.InventoryItem data, int key){
         item.GetComponent<Image>().sprite = data.item.icon;
+        item.GetComponent<ItemUIScript>().id = key;
         item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data.value+"";
     }
     void DeleteAllItem(Transform container){

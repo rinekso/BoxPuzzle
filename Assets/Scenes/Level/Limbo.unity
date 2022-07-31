@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 215751942}
   m_Layer: 0
   m_Name: Earth
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10589,7 +10589,7 @@ GameObject:
   - component: {fileID: 1138556355}
   m_Layer: 0
   m_Name: Earth (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13487,7 +13487,7 @@ GameObject:
   - component: {fileID: 1673115210}
   m_Layer: 0
   m_Name: Earth (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13770,14 +13770,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5204562112193764407, guid: d42dfaf453bc58f44a08a3a3e70b9f70, type: 3}
-      propertyPath: itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 87979d04922b36e46b44c2e412d3bc9d, type: 2}
-    - target: {fileID: 5204562112193764407, guid: d42dfaf453bc58f44a08a3a3e70b9f70, type: 3}
-      propertyPath: currentInventory.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8485443101948869146, guid: d42dfaf453bc58f44a08a3a3e70b9f70, type: 3}
       propertyPath: m_Name
       value: Player

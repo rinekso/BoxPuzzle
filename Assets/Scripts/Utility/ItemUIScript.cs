@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ItemUIScript : MonoBehaviour
 {
+    public int id;
     Canvas canvas;
     GameObject temp;
     private void Start() {
@@ -29,7 +30,10 @@ public class ItemUIScript : MonoBehaviour
         EventSystem.current.RaycastAll(eventData, raysastResults);
         foreach (RaycastResult raysastResult in raysastResults)
         {
-            print(raysastResult.gameObject.name);
+            // print(raysastResult.gameObject.name);
+            if(raysastResult.gameObject.name == "Background"){
+                Inventory.instance.DropItem(id);
+            }
         }
         Destroy(temp);
         InventoryUIScript.instance.BackgroundBlack.SetActive(false);

@@ -12,6 +12,7 @@ namespace Rinekso.Item {
     public struct Item{
         public string name;
         public Sprite icon;
+        public Color color;
         public int maxValue;
         public GameObject prefabs;
     }

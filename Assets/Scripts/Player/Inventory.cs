@@ -11,13 +11,15 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     [SerializeField]
+    Transform itemSpawn;
+    [SerializeField]
     ItemData itemData;
-    public List<InventoryItem> currentInventory;
     [System.Serializable]
     public struct InventoryItem{
         public Item item;
         public int value;
     }
+    public List<InventoryItem> currentInventory;
     Item FindItem(string name){
         return itemData.items.Find(x => x.name == name);
     }
@@ -41,7 +43,23 @@ public class Inventory : MonoBehaviour
             currentInventory.Add(tempItem);
         }
     }
+    public void RemoveItem(int id, int val){
+        InventoryItem tempItem = new InventoryItem();
+        tempItem = currentInventory[id];
+        if(currentInventory[id].value > 1){
+            tempItem.value -= val;
+            currentInventory[id] = tempItem;
+        }else{
+            currentInventory.Remove(tempItem);
+        }
+    }
     bool isInventoryHasIt(Item it){
         return currentInventory.Any(x => x.item.name == it.name);
+    }
+    public void DropItem(int id){
+        GameObject go = Instantiate(currentInventory[id].item.prefabs);
+        go.transform.position = itemSpawn.position;
+        RemoveItem(id,1);
+        InventoryUIScript.instance.RefreshItem();
     }
 }
