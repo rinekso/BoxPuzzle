@@ -25,8 +25,9 @@ MonoBehaviour:
     - for my love
     - come on useless brain!!!
   - place: rock
-    action: 
+    action: FindTree
     conv:
     - What is that?
     - Oh, just rock
     - I think that was a gold or something
+    - ...

@@ -7,6 +7,8 @@ public class MainPlayerScript : MonoBehaviour
 {
     [SerializeField]
     MonologAsset monologAsset;
+    [SerializeField]
+    GameObject playerGameObject;
     public Transform containerText;
     public TMPro.TextMeshProUGUI dialog;
     bool startMonolog = false;
@@ -48,6 +50,10 @@ public class MainPlayerScript : MonoBehaviour
         if(resetDialog){
             yield return new WaitForSeconds(convDelay*30);
             yield return StartDialog(log);
+        }else{
+            if(!string.IsNullOrEmpty(log.action)){
+                playerGameObject.GetComponent<IMonologAction>().GetInvoke(log.action);
+            }
         }
     }
     public IEnumerator DialogRunning(string conv){

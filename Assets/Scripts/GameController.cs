@@ -101,7 +101,8 @@ public class GameController : MonoBehaviour
         // print(target);
         StartCoroutine(Move(mainPlayer,target,speed,delay,callback, distance));
     }
-    IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
+    public IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
+        print(target.name);
         yield return new WaitForSeconds(delay);
         Vector3 start = target.transform.position;
         Vector3 direction = (endPoint-start).normalized;
