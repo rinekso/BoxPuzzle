@@ -111,8 +111,17 @@ public class GameController : MonoBehaviour
             target.transform.position = target.transform.position + direction * speed * Time.deltaTime;
             yield return null;
         }
+        // smoothing movement
+        float t = 0;
+        float duration = 1f;
+        while (t < 1){
+            yield return null;
+            t += Time.deltaTime / duration;
+            target.transform.position = Vector3.Lerp(target.transform.position,endPoint,t);
+        }
+        target.transform.position = endPoint;
+
         if(callback != null) callback.Invoke();
-        // target.transform.position = endPoint;
     }
     public void DoInteraction(){
         switch (currentTypeInteraction)

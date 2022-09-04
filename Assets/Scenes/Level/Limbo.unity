@@ -3473,7 +3473,7 @@ GameObject:
   - component: {fileID: 704811585}
   m_Layer: 0
   m_Name: Tree1 (2)
-  m_TagString: Triggerer
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4290,7 +4290,7 @@ GameObject:
   - component: {fileID: 809686082}
   m_Layer: 0
   m_Name: Tree1
-  m_TagString: Triggerer
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4954,6 +4954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e08df851bb3c7e4a9eb2e3555911579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerTag: Triggerer
   triggers: []
 --- !u!1 &940588362
 GameObject:
@@ -10227,7 +10228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805144163871682791, guid: dddb6e1d19a30394a9bceea2516ac6cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.7
+      value: 26.12
       objectReference: {fileID: 0}
     - target: {fileID: 7805144163871682791, guid: dddb6e1d19a30394a9bceea2516ac6cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10235,7 +10236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805144163871682791, guid: dddb6e1d19a30394a9bceea2516ac6cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.7
+      value: 17.59
       objectReference: {fileID: 0}
     - target: {fileID: 7805144163871682791, guid: dddb6e1d19a30394a9bceea2516ac6cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10367,7 +10368,7 @@ GameObject:
   - component: {fileID: 1100060894}
   m_Layer: 0
   m_Name: Tree1 (1)
-  m_TagString: Triggerer
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11718,7 +11719,7 @@ GameObject:
   - component: {fileID: 1322122419}
   m_Layer: 0
   m_Name: Tree1 (3)
-  m_TagString: Triggerer
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14112,7 +14113,7 @@ GameObject:
   - component: {fileID: 1732071335}
   m_Layer: 0
   m_Name: Tree1 (4)
-  m_TagString: Triggerer
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15117,6 +15118,7 @@ GameObject:
   - component: {fileID: 2043769230}
   - component: {fileID: 2043769236}
   - component: {fileID: 2043769237}
+  - component: {fileID: 2043769238}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Triggerer
@@ -15256,6 +15258,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2043769238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043769228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e08df851bb3c7e4a9eb2e3555911579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerTag: Tree
+  triggers: []
 --- !u!1 &2057519035
 GameObject:
   m_ObjectHideFlags: 0

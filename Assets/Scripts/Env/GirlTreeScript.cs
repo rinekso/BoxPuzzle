@@ -34,34 +34,53 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
         },2);
     }
     bool findTree = false;
+    bool find = false;
     // Detection Object
     public void TriggerEnter(GameObject target){
-        if(!findTree){
-            animator.SetBool("stress",true);
-            // print(target.transform.position);
-            StartCoroutine(GameController.instance.Move(gameObject,target.transform.position,1,0,delegate {
-                print("finish to rock");
-                monologController.StartMonolog("rock",false);
-                findTree = true;
-            },2));
-        }else{
-            StartCoroutine(GameController.instance.Move(gameObject,target.transform.position,1,0,delegate {
-                animator.SetBool("stress",false);
-                monologController.StartMonolog("tree",true);
-                findTree = false;
-            },2));
-        }
+
     }
     public void TriggerExit(GameObject target){
 
     }
     public void TriggerStay(GameObject target){
-
+        if(!find){
+            print(target.name);
+            if(!findTree){
+                animator.SetBool("stress",true);
+                // print(target.transform.position);
+                StartCoroutine(GameController.instance.Move(gameObject,target.transform.position,2,0,delegate {
+                    print("finish to rock");
+                    Destroy(target.gameObject);
+                    monologController.StartMonolog("rock",false);
+                    findTree = true;
+                },.5f));
+            }else{
+            }
+            find = true;
+        }
+    }
+    void ResetDetection(){
+        find = false;
     }
     public void GetInvoke(string func){
         Invoke(func,0);
     }
     public void FindTree(){
-        GetComponentInChildren<ObjectDetection>().targetTag = "Tree";
+
+        TriggerArea triggerArea = GetComponent<TriggerArea>();
+        triggerArea.triggers.Remove(currentTree.gameObject);
+        if(triggerArea.triggers.Count > 0){
+            
+            // move
+            StartCoroutine(GameController.instance.Move(gameObject,triggerArea.triggers[0].GetComponent<TreeAction>().point.position,2,0,delegate {
+                ResetDetection();
+
+                currentTree = triggerArea.triggers[0].GetComponent<TreeAction>();
+                animator.SetBool("stress",false);
+                monologController.StartMonolog("tree",true);
+                findTree = false;
+            },.5f));
+        }
+
     }
 }
