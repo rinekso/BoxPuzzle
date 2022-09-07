@@ -9,6 +9,11 @@ public class TreeAction : MonoBehaviour,Interactor
     public float speed;
     public float delay;
     public int[] dialogInitAfter;
+    public GameObject hiddenObject;
+    [SerializeField]
+    Transform hiddenLocation;
+    [SerializeField]
+    bool hiddenDrop = true;
     public void Action(){
         GetComponent<Animator>().SetTrigger("move");
         GameController.instance.MoveMain(point.position,speed,delay,delegate {
@@ -22,5 +27,9 @@ public class TreeAction : MonoBehaviour,Interactor
     }
     public void HardShake(){
         GetComponent<Animator>().SetTrigger("hardtrigger");
+        if(hiddenDrop) {
+            Instantiate(hiddenObject,hiddenLocation.position, hiddenObject.transform.rotation);
+            hiddenDrop = false;
+        }
     }
 }

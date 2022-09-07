@@ -12,6 +12,7 @@ TagManager:
   - MainCanvas
   - Rock
   - Tree
+  - Lighter
   layers:
   - Default
   - TransparentFX

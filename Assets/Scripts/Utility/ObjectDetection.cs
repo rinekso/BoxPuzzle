@@ -13,23 +13,23 @@ public class ObjectDetection : MonoBehaviour
     bool enter = false;
     
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == targetTag && !enter){
+        if(other.tag == "Triggerer" && other.GetComponent<TriggererProperty>().name == targetTag && !enter){
             enter = true;
             if(triggerEnter != null) triggerEnter.Invoke();
-            objectDetectionEvent.GetComponent<IObjectDetectionEvent>().TriggerEnter(other.gameObject);
+            if(objectDetectionEvent) objectDetectionEvent.GetComponent<IObjectDetectionEvent>().TriggerEnter(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other) {
-        if(other.tag == targetTag){
+        if(other.tag == "Triggerer" && other.GetComponent<TriggererProperty>().name == targetTag){
             if(triggerExit != null) triggerExit.Invoke();
-            objectDetectionEvent.GetComponent<IObjectDetectionEvent>().TriggerExit(other.gameObject);
+            if(objectDetectionEvent) objectDetectionEvent.GetComponent<IObjectDetectionEvent>().TriggerExit(other.gameObject);
         }
     }
     private void OnTriggerStay(Collider other) {
-        if(other.tag == targetTag){
+        if(other.tag == "Triggerer" && other.GetComponent<TriggererProperty>().name == targetTag){
             enter = false;
             if(triggerStay != null) triggerStay.Invoke();
-            objectDetectionEvent.GetComponent<IObjectDetectionEvent>().TriggerStay(other.gameObject);
+            if(objectDetectionEvent) objectDetectionEvent.GetComponent<IObjectDetectionEvent>().TriggerStay(other.gameObject);
         }
     }
 
