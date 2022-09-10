@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2437180013049141029}
   - component: {fileID: 2437180013049141026}
   - component: {fileID: 3020643793391908653}
+  - component: {fileID: 5152213257773769593}
   m_Layer: 0
   m_Name: Lighter
-  m_TagString: Triggerer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,3 +142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: lighter
+--- !u!114 &5152213257773769593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437180013049141024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0a85973b34165041a4d4d906d61c462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog: Lighter

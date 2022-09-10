@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1562473811708236868}
   - component: {fileID: 1562473811708236867}
   - component: {fileID: 2630902439532849894}
+  - component: {fileID: 228590200490938484}
   m_Layer: 0
   m_Name: Book
-  m_TagString: Triggerer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,3 +142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: book
+--- !u!114 &228590200490938484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562473811708236865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf25560c29a15d4d8cdfcc250969e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog: Book

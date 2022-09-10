@@ -29,9 +29,9 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
         DialogAssets.instance.InitDialog(dialogTriggerer);
     }
     public void ComeCloserToGirl(){
-        GameController.instance.MoveMain(transform.position,3,1, delegate {
+        GameController.instance.MoveMain(currentTree.point2.position,5,1, delegate {
             DialogAssets.instance.InitDialog(dialogClose);
-        },2);
+        },.2f);
     }
     bool findTree = false;
     bool find = false;
@@ -48,13 +48,14 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
             if(!findTree){
                 animator.SetBool("stress",true);
                 // print(target.transform.position);
-                StartCoroutine(GameController.instance.Move(gameObject,target.transform.position,2,0,delegate {
+                GameController.instance.Move(gameObject,target.transform.position,2,0,delegate {
                     print("finish to rock");
                     Destroy(target.gameObject);
                     monologController.StartMonolog("rock",false);
                     findTree = true;
-                },.5f));
+                },.5f);
             }else{
+
             }
             find = true;
         }
@@ -68,19 +69,18 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
     public void FindTree(){
 
         TriggerArea triggerArea = GetComponent<TriggerArea>();
-        triggerArea.triggers.Remove(currentTree.gameObject);
-        if(triggerArea.triggers.Count > 0){
-            
-            // move
-            StartCoroutine(GameController.instance.Move(gameObject,triggerArea.triggers[0].GetComponent<TreeAction>().point.position,2,0,delegate {
-                ResetDetection();
-
-                currentTree = triggerArea.triggers[0].GetComponent<TreeAction>();
-                animator.SetBool("stress",false);
-                monologController.StartMonolog("tree",true);
-                findTree = false;
-            },.5f));
+        if(triggerArea.triggers.Count > 1){
+            triggerArea.triggers.Remove(currentTree.gameObject);            
         }
+        // move
+        GameController.instance.Move(gameObject,triggerArea.triggers[0].GetComponent<TreeAction>().point.position,2,0,delegate {
+            ResetDetection();
+
+            currentTree = triggerArea.triggers[0].GetComponent<TreeAction>();
+            animator.SetBool("stress",false);
+            monologController.StartMonolog("tree",true);
+            findTree = false;
+        },.5f);
 
     }
 }

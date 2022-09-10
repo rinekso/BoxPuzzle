@@ -200,3 +200,152 @@ MonoBehaviour:
       conv: I can't say anything else.
       action: 
       choices: []
+  - name: Book
+    conversations:
+    - charId: 1
+      isRight: 0
+      conv: That's a book
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I remember that I use to write some story in there
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I remember I used to write stories in books and save them without anyone
+        knowing
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: but I ended up burning the book
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: for good
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I think...
+      action: 
+      choices: []
+  - name: Box
+    conversations:
+    - charId: 1
+      isRight: 0
+      conv: Oh SHIT NO!!!
+      action: FindFarestTree
+      choices: []
+  - name: FearOfBox
+    conversations:
+    - charId: 1
+      isRight: 0
+      conv: I'm shaking
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: is this because...
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: Now I remember it
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I am dead
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: yeah, I am really dead
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I died in a cardboard box
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: Damn it!
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: Because that gas
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: And I also don't want people to know where I am
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I know that feeling. Guilty and want to hide
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: I'm so lonely
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: Even now
+      action: 
+      choices: []
+    - charId: 0
+      isRight: 1
+      conv: Hey! I'm here!
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: No one cares about me.
+      action: 
+      choices: []
+    - charId: 0
+      isRight: 1
+      conv: I am helping you all the time, man!
+      action: 
+      choices: []
+    - charId: 0
+      isRight: 1
+      conv: Where is your manners?
+      action: 
+      choices: []
+    - charId: 0
+      isRight: 1
+      conv: Okay, maybe he can't see me.
+      action: 
+      choices: []
+    - charId: 0
+      isRight: 1
+      conv: I need to stay help him to go out of this place
+      action: 
+      choices: []
+    - charId: 0
+      isRight: 1
+      conv: Right?
+      action: 
+      choices: []
+  - name: Lighter
+    conversations:
+    - charId: 1
+      isRight: 0
+      conv: This is what I need it
+      action: 
+      choices: []
+    - charId: 1
+      isRight: 0
+      conv: Finally, I can go far from this creepy place
+      action: GoToTorch
+      choices: []

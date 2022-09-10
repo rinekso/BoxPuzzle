@@ -12,10 +12,9 @@ public class GameController : MonoBehaviour
     }
     public static GameController instance;
     [Header("UI")]
-    public GameObject interactButton;
-    public GameObject grabButton;
-    public GameObject dropButton;
-    public Button jumpButton;
+    public bool isInteraction = true;
+    [SerializeField]
+    GameObject interactButton;
     [Header("Player")]
     public GameObject playerPrefabs;
     public GameObject currentPlayer;
@@ -31,6 +30,7 @@ public class GameController : MonoBehaviour
     public Interaction currentTypeInteraction;
     public int currentIdInteraction;
     public GameObject currentGOInteraction;
+    Coroutine move;
     private void Awake() {
         PlayerPrefs.DeleteAll();
         instance = this;
@@ -43,11 +43,9 @@ public class GameController : MonoBehaviour
         currentPlayer.transform.position = pointStart[currentPointStart].position;
         camPlace.target = currentPlayer.transform;
 
-        dropButton.SetActive(false);
-        grabButton.SetActive(false);
     }
     public void ActiveGrab(bool stat){
-        grabButton.SetActive(stat);
+        // grabButton.SetActive(stat);
     }
     public void ActiveInteraction(bool stat){
         interactButton.SetActive(stat);
@@ -57,14 +55,14 @@ public class GameController : MonoBehaviour
     }
     public void GrabObject(){
         playerStat.GrabObject();
-        dropButton.SetActive(true);
-        grabButton.SetActive(false);
+        // dropButton.SetActive(true);
+        // grabButton.SetActive(false);
     }
     public void DropObject(){
         if(playerStat.isFrontEmpty){
             playerStat.DropObject();
-            dropButton.SetActive(false);
-            grabButton.SetActive(true);
+            // dropButton.SetActive(false);
+            // grabButton.SetActive(true);
         }
     }
     public void Jump(){
@@ -99,10 +97,16 @@ public class GameController : MonoBehaviour
     }
     public void MoveMain(Vector3 target, float speed, float delay, UnityAction callback = null, float distance = .2f){
         // print(target);
-        StartCoroutine(Move(mainPlayer,target,speed,delay,callback, distance));
+        if(move != null) StopCoroutine(move);
+        move = StartCoroutine(DoMove(mainPlayer,target,speed,delay,callback, distance));
     }
-    public IEnumerator Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
-        print(target.name);
+    public void Move(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
+        if(move != null) StopCoroutine(move);
+        move = StartCoroutine(DoMove(target,endPoint,speed,delay,callback,distance));
+    }
+    public IEnumerator DoMove(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
+        isInteraction = false;
+        // print(target.name);
         yield return new WaitForSeconds(delay);
         Vector3 start = target.transform.position;
         Vector3 direction = (endPoint-start).normalized;
@@ -120,7 +124,7 @@ public class GameController : MonoBehaviour
             target.transform.position = Vector3.Lerp(target.transform.position,endPoint,t);
         }
         target.transform.position = endPoint;
-
+        isInteraction = true;
         if(callback != null) callback.Invoke();
     }
     public void DoInteraction(){
@@ -146,5 +150,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        interactButton.GetComponent<Button>().interactable = isInteraction;
+    }
+    public void EndLevel(){
+        camPlace.target = null;
+    }
+    public void MoveNextLevel(){
+        animator.SetTrigger("Start");
     }
 }

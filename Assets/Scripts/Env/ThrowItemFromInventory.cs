@@ -9,9 +9,11 @@ public class ThrowItemFromInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tag = "Untagged";
         GetComponent<Rigidbody>().AddForce(Vector3.up*force,ForceMode.Force);
     }
     private void OnCollisionEnter(Collision other) {
+        tag = "Triggerer";
         if (other.transform.tag == "Ground")
         {
             GetComponent<Rigidbody>().isKinematic = true;

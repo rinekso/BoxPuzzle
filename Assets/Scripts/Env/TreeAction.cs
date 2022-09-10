@@ -16,7 +16,7 @@ public class TreeAction : MonoBehaviour,Interactor
     bool hiddenDrop = true;
     public void Action(){
         GetComponent<Animator>().SetTrigger("move");
-        GameController.instance.MoveMain(point.position,speed,delay,delegate {
+        GameController.instance.MoveMain(point2.position,speed,delay,delegate {
             int point = PlayerPrefs.GetInt("Main-TreePoint");
             if(point<dialogInitAfter.Length){
                 DialogAssets.instance.InitDialog(dialogInitAfter[point]);
