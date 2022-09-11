@@ -69,11 +69,21 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
     public void FindTree(){
 
         TriggerArea triggerArea = GetComponent<TriggerArea>();
-        if(triggerArea.triggers.Count > 1){
-            triggerArea.triggers.Remove(currentTree.gameObject);            
+        List<GameObject> trees = new List<GameObject>(triggerArea.triggers);
+        if(trees.Count > 1)
+            trees.Remove(currentTree.gameObject);
+        GameObject nearTree = triggerArea.triggers[0];
+        float near = 100;
+        foreach (var item in trees)
+        {
+            if(near > Vector3.Distance(transform.position,item.transform.position))
+            {
+                nearTree = item;
+                near = Vector3.Distance(transform.position,item.transform.position);
+            }
         }
         // move
-        GameController.instance.Move(gameObject,triggerArea.triggers[0].GetComponent<TreeAction>().point.position,2,0,delegate {
+        GameController.instance.Move(gameObject,nearTree.GetComponent<TreeAction>().point.position,2,0,delegate {
             ResetDetection();
 
             currentTree = triggerArea.triggers[0].GetComponent<TreeAction>();

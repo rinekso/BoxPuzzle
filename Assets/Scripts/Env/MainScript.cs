@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class MainScript : MonoBehaviour
 {
-    public void FindFarestTree(){
+    public async void FindFarestTree(){
+        GetComponent<TriggerArea>().triggers.RemoveAll(item => item == null);
+        print("remove");
         List<GameObject> trees = GetComponent<TriggerArea>().triggers.FindAll( x => {
-            return x.GetComponent<TriggererProperty>().name == "tree";
+            if(x.GetComponent<TriggererProperty>())
+                return x.GetComponent<TriggererProperty>().name == "tree";
+            else
+                return x.name == "tree";
         });
         GameObject farTree = trees[0];
         float far = 0;
