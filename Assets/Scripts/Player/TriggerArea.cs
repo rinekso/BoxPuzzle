@@ -8,6 +8,8 @@ public class TriggerArea : MonoBehaviour
     [SerializeField]
     string specificName;
     public List<GameObject> triggers;
+    [SerializeField]
+    bool dontEmpty = false;
     private void OnTriggerEnter(Collider other) {
         // print(other.tag);
         if(other.tag == "Triggerer" && !triggers.Contains(other.gameObject)){
@@ -28,7 +30,12 @@ public class TriggerArea : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if(!GetComponent<Collider>().isTrigger) return;
         if(other.tag == "Triggerer"){
-            triggers.Remove(other.gameObject);
+            if(!dontEmpty)
+                triggers.Remove(other.gameObject);
+            else{
+                if(triggers.Count > 1)
+                    triggers.Remove(other.gameObject);
+            }
         }
     }
 }

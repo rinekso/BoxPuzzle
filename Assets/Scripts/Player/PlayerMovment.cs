@@ -21,13 +21,34 @@ public class PlayerMovment : MonoBehaviour
     public bool joystick;
     float horizontal, vertical;
     Animator animator;
+    float idleTemp;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         camera = Camera.main;
         fixedJoystick = GameObject.FindObjectOfType<FixedJoystick>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+        InvokeRepeating("SetRandomIdleAnimation",0,10);
+    }
+    void SetRandomIdleAnimation(){
+        StartCoroutine(TransitionIdleAnimation());
+    }
+    IEnumerator TransitionIdleAnimation(){
+        float newIdleTemp = Random.Range(0f,1f);
+        float t = 0;
+        float duration = 5;
+        float startIdle = idleTemp;
+        while (t < 1)
+        {
+            yield return null;
+            t += Time.deltaTime/duration;
+
+            idleTemp = Mathf.Lerp(startIdle,newIdleTemp,t);
+            animator.SetFloat("Random",idleTemp);
+        }
+        idleTemp = newIdleTemp;
+        animator.SetFloat("Random",idleTemp);
     }
     // Update is called once per frame
     void Update()
@@ -83,12 +104,44 @@ public class PlayerMovment : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         isDashing = false;
     }
+    enum StateRotation
+    {
+        Right,Left,Up,Down
+    }
+    StateRotation lastStateRotation;
+    StateRotation stateRotation;
     void Move(){
-        animator.SetBool("Move",true);
-        animator.SetFloat("Horizontal",horizontal);
+        // animator.SetFloat("Horizontal",horizontal);
 
         Vector3 input = new Vector3(horizontal,0,vertical);
         Vector3 camPos = camera.transform.position;
+
+        // Quaternion targetRotation;
+        // if (horizontal != 0)
+        // {
+        //     lastStateRotation = stateRotation;
+        //     if(horizontal < 0){
+        //         stateRotation = StateRotation.Left;
+        //         targetRotation = Quaternion.Euler(0,90,0);
+        //     }else{
+        //         stateRotation = StateRotation.Right;
+        //         targetRotation = Quaternion.Euler(0,-90,0);
+        //     }
+        // }else{
+        //     lastStateRotation = stateRotation;
+        //     if(vertical < 0){
+        //         stateRotation = StateRotation.Up;
+        //         targetRotation = Quaternion.Euler(0,0,0);                
+        //     }else{
+        //         stateRotation = StateRotation.Down;
+        //         targetRotation = Quaternion.Euler(0,180,0);                
+        //     }
+        // }
+        // print(lastStateRotation +"/"+ stateRotation);
+        // if(lastStateRotation != stateRotation){
+        //     StopAllCoroutines();
+        //     StartCoroutine(Rotate(transform.rotation,targetRotation,.2f));
+        // }
 
         Vector3 a = camPos+input;
         dirTemp = Quaternion.Euler(new Vector3(0,camera.transform.rotation.eulerAngles.y,0))*(a-camPos).normalized;
@@ -105,7 +158,17 @@ public class PlayerMovment : MonoBehaviour
             //         positionTemp = transform.position;
             //     }
             // }
-            // transform.rotation = Quaternion.LookRotation(dirTemp);
+            transform.rotation = Quaternion.LookRotation(dirTemp);
+    }
+    IEnumerator Rotate(Quaternion startRotate, Quaternion endRotate, float duration){
+        float t = 0;
+        while (t < 1)
+        {
+            yield return null;
+            t += Time.deltaTime/duration;
+            transform.rotation = Quaternion.Lerp(startRotate, endRotate, t);
+        }
+        transform.rotation = endRotate;
     }
     private void OnCollisionStay(Collision other) {
         if(other.contacts.Length > 0)

@@ -4,6 +4,31 @@ using UnityEngine;
 
 public class MainScript : MonoBehaviour
 {
+    Animator animator;
+    float idleTemp = 0;
+    private void Start() {
+        animator = GetComponentInChildren<Animator>();
+        InvokeRepeating("SetRandomIdleAnimation",0,10);
+    }
+    void SetRandomIdleAnimation(){
+        StartCoroutine(TransitionIdleAnimation());
+    }
+    IEnumerator TransitionIdleAnimation(){
+        float newIdleTemp = Random.Range(0f,1f);
+        float t = 0;
+        float duration = 5;
+        float startIdle = idleTemp;
+        while (t < 1)
+        {
+            yield return null;
+            t += Time.deltaTime/duration;
+
+            idleTemp = Mathf.Lerp(startIdle,newIdleTemp,t);
+            animator.SetFloat("Random",idleTemp);
+        }
+        idleTemp = newIdleTemp;
+        animator.SetFloat("Random",idleTemp);
+    }
     public async void FindFarestTree(){
         GetComponent<TriggerArea>().triggers.RemoveAll(item => item == null);
         print("remove");

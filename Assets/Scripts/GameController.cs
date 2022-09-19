@@ -105,6 +105,7 @@ public class GameController : MonoBehaviour
         move = StartCoroutine(DoMove(target,endPoint,speed,delay,callback,distance));
     }
     public IEnumerator DoMove(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
+        target.transform.rotation = Quaternion.LookRotation(endPoint);
         isInteraction = false;
         // print(target.name);
         yield return new WaitForSeconds(delay);
