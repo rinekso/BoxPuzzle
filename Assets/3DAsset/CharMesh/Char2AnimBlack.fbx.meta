@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: ec08cc6ead311b147990fba685a943b6
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -2026285407137182991
+    second: Char2ArmBlack|Char1Cook2
+  - first:
+      74: -1407317921510903017
+    second: Char2ArmBlack|Char1Cook3
+  - first:
+      74: -4353999135292069278
+    second: Char2ArmBlack|Char1Cook4
+  - first:
+      74: -5012863988614325015
+    second: Char2ArmBlack|Char1Cook5
+  - first:
+      74: 6407431994467730928
+    second: Char2ArmBlack|Char1Cook6
+  - first:
+      74: -3010407567399253801
+    second: Char2ArmBlack|Char1Exec1
+  - first:
+      74: 6412213727613186478
+    second: Char2ArmBlack|Char1Idle1
+  - first:
+      74: 295153317605406143
+    second: Char2ArmBlack|Char1Idle2
+  - first:
+      74: 4342992264581989781
+    second: Char2ArmBlack|Char1Idle3
+  - first:
+      74: -8977823504846389328
+    second: Char2ArmBlack|Char1Idle4
+  - first:
+      74: 2441789968490557986
+    second: Char2ArmBlack|Char1Idle5
+  - first:
+      74: -3831434388150653847
+    second: Char2ArmBlack|Char1Idle6
+  - first:
+      74: -6703459973585682323
+    second: Char2ArmBlack|Char1Idle7
+  - first:
+      74: 5785624932123973920
+    second: Char2ArmBlack|Char1Pick1
+  - first:
+      74: 5829924491311159946
+    second: Char2ArmBlack|Char1Talk1
+  - first:
+      74: -5911280088669179747
+    second: Char2ArmBlack|Char1Talk2
+  - first:
+      74: -2168765547499396919
+    second: Char2ArmBlack|Char1Talk3
+  - first:
+      74: 8771707742671581226
+    second: Char2ArmBlack|Char2Idle1
+  - first:
+      74: -8982627419845304066
+    second: Char2ArmBlack|Char2Idle2
+  - first:
+      74: -2345015036738181687
+    second: Char2ArmBlack|Char2Idle3
+  - first:
+      74: -8284426091177196833
+    second: Char2ArmBlack|Char2Idle4
+  - first:
+      74: -3138252630223792927
+    second: Char2ArmBlack|Char2Talk1
+  - first:
+      74: 7719972682459524328
+    second: Char2ArmBlack|Char2Talk2
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char2
+    second: {fileID: 2100000, guid: 97dcfd7de46ddf64f8115e82edb91314, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char2Body
+    second: {fileID: 2100000, guid: 9781d06863a2f4746a2585b064334b4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char2Hair
+    second: {fileID: 2100000, guid: 85db715bca23be14eb9672be95aad683, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

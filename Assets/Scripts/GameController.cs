@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
     }
     void InteractObject(){
         currentGOInteraction.GetComponent<Interactor>().Action();
-        currentPlayer.GetComponentInChildren<MainPlayerScript>().StopMonolog();
+        // currentPlayer.GetComponentInChildren<MainPlayerScript>().StopMonolog();
     }
     public void MoveMain(Vector3 target, float speed, float delay, UnityAction callback = null, float distance = .2f){
         // print(target);
@@ -105,7 +105,8 @@ public class GameController : MonoBehaviour
         move = StartCoroutine(DoMove(target,endPoint,speed,delay,callback,distance));
     }
     public IEnumerator DoMove(GameObject target, Vector3 endPoint, float speed = 1, float delay = 0, UnityAction callback = null, float distance = .2f){
-        target.transform.rotation = Quaternion.LookRotation(endPoint);
+        Quaternion rotation = Quaternion.LookRotation((endPoint-target.transform.position), Vector3.up);
+        target.transform.rotation = rotation;
         isInteraction = false;
         // print(target.name);
         yield return new WaitForSeconds(delay);
@@ -156,7 +157,8 @@ public class GameController : MonoBehaviour
     public void EndLevel(){
         camPlace.target = null;
     }
-    public void MoveNextLevel(){
+    public void MoveNextLevel(string scene){
         animator.SetTrigger("Start");
+        Application.LoadLevel(scene);
     }
 }

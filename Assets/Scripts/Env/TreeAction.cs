@@ -10,6 +10,7 @@ public class TreeAction : MonoBehaviour,Interactor
     public float delay;
     public int[] dialogInitAfter;
     public GameObject hiddenObject;
+    int shakeValue;
     [SerializeField]
     Transform hiddenLocation;
     [SerializeField]

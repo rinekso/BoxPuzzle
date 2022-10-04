@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BsEnvi1Lv1Stone1
+    second: {fileID: 2100000, guid: 3660a82c763118e41b892590911b5a27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Envi1Lv1Bones1
     second: {fileID: 2100000, guid: c486181b86959db40abfdb51ad14ec4c, type: 2}
   - first:

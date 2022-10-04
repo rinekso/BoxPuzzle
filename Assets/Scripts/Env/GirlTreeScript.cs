@@ -10,16 +10,16 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
     int dialogTriggerer;
     [SerializeField]
     string dialogClose;
+    [SerializeField]
     MainPlayerScript monologController;
     Animator animator;
     private void Start() {
-        monologController = GetComponentInChildren<MainPlayerScript>();
         monologController.StartMonolog("tree",true);
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
     // [SerializeField]
     // UnityEvent GirlReaction;
-    public void Strees(){
+    public void Stress(){
         if(currentTree != null)
             currentTree.HardShake();
     }
@@ -51,6 +51,7 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
                 GameController.instance.Move(gameObject,target.transform.position,2,0,delegate {
                     print("finish to rock");
                     Destroy(target.gameObject);
+                    animator.SetTrigger("pick");
                     monologController.StartMonolog("rock",false);
                     findTree = true;
                 },.5f);

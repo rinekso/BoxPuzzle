@@ -31,6 +31,9 @@ public class ItemUIScript : MonoBehaviour
         foreach (RaycastResult raysastResult in raysastResults)
         {
             // print(raysastResult.gameObject.name);
+            if(raysastResult.gameObject.name == "BackgroundContainer"){
+                break;
+            }
             if(raysastResult.gameObject.name == "Background"){
                 Inventory.instance.DropItem(id);
             }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - name: rock
-    icon: {fileID: 21300000, guid: 344821b78584b7346ba97595c4928fe7, type: 3}
-    color: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+    icon: {fileID: 21300000, guid: 8404124da29e14843868014850274f72, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
     maxValue: 10
     prefabs: {fileID: 7805144163871682788, guid: dddb6e1d19a30394a9bceea2516ac6cb, type: 3}
   - name: lighter

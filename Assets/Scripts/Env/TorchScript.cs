@@ -28,11 +28,11 @@ public class TorchScript : MonoBehaviour, Interactor, ITriggerer
     public void GoToTorch(){
         GameController.instance.MoveMain(point.position,speed,delay,delegate {
             fire.SetActive(true);
-            mist.GetComponent<ParticleSystem>().loop = false;
+            mist.GetComponentInChildren<ParticleSystem>().loop = false;
             mist.GetComponentInChildren<BoxCollider>().enabled = false;
             GameController.instance.EndLevel();
             GameController.instance.MoveMain(finalPoint.position,speed,5,delegate {
-                GameController.instance.MoveNextLevel();
+                GameController.instance.MoveNextLevel("Limbo2");
             });
         });
     }
