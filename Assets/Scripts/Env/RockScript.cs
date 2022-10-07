@@ -5,6 +5,7 @@ using UnityEngine;
 public class RockScript : MonoBehaviour, Interactor
 {
     public void Action(){
+        SoundController.Instance.PlayEffect(1);
         Inventory.instance.AddItem("rock",4);
     }
     // Start is called before the first frame update

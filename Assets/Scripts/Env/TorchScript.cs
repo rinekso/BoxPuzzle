@@ -16,6 +16,7 @@ public class TorchScript : MonoBehaviour, Interactor, ITriggerer
     [SerializeField]
     Transform finalPoint;
     public void Action(){
+        SoundController.Instance.PlayEffect(0);
         GameController.instance.MoveMain(point.position,speed,delay,delegate {
             DialogAssets.instance.InitDialog(dialogInitAfter[0]);
         });
@@ -32,7 +33,7 @@ public class TorchScript : MonoBehaviour, Interactor, ITriggerer
             mist.GetComponentInChildren<BoxCollider>().enabled = false;
             GameController.instance.EndLevel();
             GameController.instance.MoveMain(finalPoint.position,speed,5,delegate {
-                GameController.instance.MoveNextLevel("Limbo2");
+                GameController.instance.MoveNextLevel("ComingSoon");
             });
         });
     }

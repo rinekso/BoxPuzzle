@@ -16,6 +16,7 @@ public class TreeAction : MonoBehaviour,Interactor
     [SerializeField]
     bool hiddenDrop = true;
     public void Action(){
+        SoundController.Instance.PlayEffect(2);
         GetComponent<Animator>().SetTrigger("move");
         GameController.instance.MoveMain(point2.position,speed,delay,delegate {
             int point = PlayerPrefs.GetInt("Main-TreePoint");
@@ -25,6 +26,8 @@ public class TreeAction : MonoBehaviour,Interactor
             point++;
             PlayerPrefs.SetInt("Main-TreePoint",point);
         });
+
+        GameObject.FindObjectOfType<TreeIndicator>().AddTreeAction(this);
     }
     public void HardShake(){
         GetComponent<Animator>().SetTrigger("hardtrigger");

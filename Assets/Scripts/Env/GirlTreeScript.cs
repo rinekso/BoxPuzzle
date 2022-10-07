@@ -86,6 +86,7 @@ public class GirlTreeScript : MonoBehaviour, ITriggerer, IObjectDetectionEvent, 
         // move
         GameController.instance.Move(gameObject,nearTree.GetComponent<TreeAction>().point.position,2,0,delegate {
             ResetDetection();
+            transform.rotation = new Quaternion();
 
             currentTree = triggerArea.triggers[0].GetComponent<TreeAction>();
             animator.SetBool("stress",false);

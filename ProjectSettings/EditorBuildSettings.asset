@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mainmenu.unity
     guid: 9aba276da6e2f8441bfa81433d63cd06
   - enabled: 1
     path: Assets/Scenes/Level/Limbo.unity
     guid: e42568a011f196746b227ab243ef12b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level/Limbo2.unity
     guid: 138361839db2c1548a768fff26040d1b
+  - enabled: 1
+    path: Assets/Scenes/ComingSoon.unity
+    guid: 7e83a064f1de2c04b8f1828be3e0a063
   m_configObjects: {}
